@@ -54,6 +54,7 @@ module.exports = {
         map: [
           ['@utils', path.resolve(__dirname, 'src/utils')],
           ['@components', path.resolve(__dirname, 'src/components')],
+          ['three', path.resolve(__dirname, 'node_modules/three')],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
