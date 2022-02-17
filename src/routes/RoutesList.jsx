@@ -5,7 +5,7 @@ import Header from '../components/molecules/Header';
 import { PAGES } from './paths';
 
 const RoutesList = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Header />
     <Routes>
       {PAGES.map(({ id, path, element }) => (
