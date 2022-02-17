@@ -1,5 +1,12 @@
-import './App.css';
+import { ThemeProvider } from 'styled-components';
 
-const App = () => <div className="App">Hello world</div>;
+import { theme } from './resources/theme';
+import RoutesList from './routes/RoutesList';
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <RoutesList />
+  </ThemeProvider>
+);
 
 export default App;
