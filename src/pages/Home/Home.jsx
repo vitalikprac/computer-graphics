@@ -1,9 +1,19 @@
+import { useRef } from 'react';
+
+import { useHome } from './useHome';
 import * as S from './Home.styled';
 
 const Home = () => {
-  console.log(1);
+  const sceneRef = useRef(null);
 
-  return <S.Wrapper>Hello world</S.Wrapper>;
+  useHome({ sceneRef });
+
+  return (
+    <S.Wrapper>
+      <span>Hello world</span>
+      <S.Scene ref={sceneRef} />
+    </S.Wrapper>
+  );
 };
 
 export default Home;
