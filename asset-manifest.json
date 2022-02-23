@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/computer-graphics/static/css/main.a2c247fb.css",
-    "main.js": "/computer-graphics/static/js/main.907944f7.js",
+    "main.js": "/computer-graphics/static/js/main.e13e8139.js",
     "index.html": "/computer-graphics/index.html",
     "main.a2c247fb.css.map": "/computer-graphics/static/css/main.a2c247fb.css.map",
-    "main.907944f7.js.map": "/computer-graphics/static/js/main.907944f7.js.map"
+    "main.e13e8139.js.map": "/computer-graphics/static/js/main.e13e8139.js.map"
   },
   "entrypoints": [
     "static/css/main.a2c247fb.css",
-    "static/js/main.907944f7.js"
+    "static/js/main.e13e8139.js"
   ]
 }
