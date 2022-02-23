@@ -13,12 +13,6 @@ import { createCamera, createOrbitControls, createScene } from './sceneUtils';
 const HEIGHT = 600;
 const WIDTH = 600;
 
-const LINE_FUNCTION = {
-  a: 4,
-  b: 3,
-  c: 12,
-};
-
 const handleDrag = ({ point, lineToPoint, lineFunction }) => {
   const nearestPoint = getNearestPointToLine({
     line: lineFunction,
@@ -34,15 +28,31 @@ const handleDrag = ({ point, lineToPoint, lineFunction }) => {
   );
 
   const distance = getDistanceBetweenPointAndLine({
-    line: LINE_FUNCTION,
+    line: lineFunction,
     point,
   });
-  // eslint-disable-next-line no-console
-  console.log(distance);
-  // TODO: distance between point and line
+
+  return { distance };
 };
 
-export const loadThreeJs = () => {
+export const updateLine = ({ line, lineFunction }) => {
+  const linePoints = createLinePointsFromLineFunction(lineFunction);
+
+  line.geometry.attributes.position.setXYZ(
+    0,
+    linePoints.from.x,
+    linePoints.from.y,
+    0,
+  );
+  line.geometry.attributes.position.setXYZ(
+    1,
+    linePoints.to.x,
+    linePoints.to.y,
+    0,
+  );
+};
+
+export const loadThreeJs = ({ setPoint, lineFunction }) => {
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(WIDTH, HEIGHT);
 
@@ -51,12 +61,13 @@ export const loadThreeJs = () => {
   const scene = createScene();
   createHelper({ scene });
 
-  const linePoints = createLinePointsFromLineFunction(LINE_FUNCTION);
+  const linePoints = createLinePointsFromLineFunction(lineFunction);
   const line = createLine(linePoints);
   scene.add(line);
 
   const point = createCircle({});
   scene.add(point);
+  setPoint({ ...point.position });
 
   const dragControls = new DragControls([point], camera, renderer.domElement);
 
@@ -66,13 +77,19 @@ export const loadThreeJs = () => {
   });
   scene.add(lineToPoint);
 
-  dragControls.addEventListener('drag', (event) => {
-    handleDrag({
+  const calculate = (event, lineFunc) => {
+    console.log(event);
+    const { distance } = handleDrag({
       point: event.object.position,
       lineToPoint,
-      lineFunction: LINE_FUNCTION,
+      lineFunction: lineFunc,
     });
     lineToPoint.geometry.attributes.position.needsUpdate = true;
+    setPoint({ ...event.object.position, distance });
+  };
+
+  dragControls.addEventListener('drag', (event) => {
+    calculate(event, lineFunction);
   });
 
   const animate = () => {
@@ -83,5 +100,5 @@ export const loadThreeJs = () => {
 
   animate();
 
-  return { renderer };
+  return { renderer, point, line, calculate };
 };

@@ -11,6 +11,8 @@ const RoutesList = () => (
       {PAGES.map(({ id, path, element }) => (
         <Route key={id} path={path} element={element} />
       ))}
+
+      <Route path="*" element={PAGES[0].element} />
     </Routes>
   </Router>
 );
