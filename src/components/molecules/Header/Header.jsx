@@ -11,7 +11,7 @@ const Header = () => (
     <Menu mode="horizontal" theme="dark">
       {PAGES.map(({ id, path, title }) => (
         <Menu.Item key={id}>
-          <Link to={path}>{title}</Link>
+          <Link to={`#${path}`}>{title}</Link>
         </Menu.Item>
       ))}
     </Menu>
