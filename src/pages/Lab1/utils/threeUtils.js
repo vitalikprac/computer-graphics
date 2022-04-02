@@ -78,7 +78,6 @@ export const loadThreeJs = ({ setPoint, lineFunction }) => {
   scene.add(lineToPoint);
 
   const calculate = (event, lineFunc) => {
-    console.log(event);
     const { distance } = handleDrag({
       point: event.object.position,
       lineToPoint,

@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
 import Header from '../components/molecules/Header';
 
@@ -12,7 +17,7 @@ const RoutesList = () => (
         <Route key={id} path={path} element={element} />
       ))}
 
-      <Route path="*" element={PAGES[0].element} />
+      <Route path="*" element={<Navigate to={PAGES[1].path} replace />} />
     </Routes>
   </Router>
 );
