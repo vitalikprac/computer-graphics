@@ -30,11 +30,6 @@ const calculateDistanceBetweenTwoPoints = (point1, point2) => {
   return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2 + (z1 - z2) ** 2);
 };
 
-console.log(
-  calculateDistanceBetweenTwoPoints({ x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1 }),
-  getNearestPointToSquare,
-);
-
 // n - це вектор нормалі (0,0,1);
 // r - це вектор до площини (1,1,1);
 

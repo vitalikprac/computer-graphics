@@ -81,7 +81,6 @@ export const loadThreeJs = ({ sceneRef, setPoint }) => {
   const distanceToPoint = plane.distanceToPoint(
     new THREE.Vector3(pointCoords.x, pointCoords.y, pointCoords.z),
   );
-  console.log({ distanceToPoint });
 
   const projection = plane.projectPoint(
     new THREE.Vector3(pointCoords.x, pointCoords.y, pointCoords.z),
